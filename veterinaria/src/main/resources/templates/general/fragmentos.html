@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+    <body>
+
+        <header th:fragment="header" class="text-center py-4 bg-primary text-white">
+            <h1 th:text="#{header.titulo}">Veterinaria Huellitas</h1>
+            <p class="mb-0" th:text="#{header.subtitulo}">
+                Cuidamos a quienes llenan tu vida de alegría
+            </p>
+        </header>
+
+        <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand"
+                   th:href="@{/}"
+                   th:text="#{app.nombre}">Veterinaria Huellitas</a>
+
+                <button class="navbar-toggler" type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#menuPrincipal"
+                        aria-controls="menuPrincipal"
+                        aria-expanded="false"
+                        aria-label="Mostrar navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/}"
+                               th:text="#{nav.inicio}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/tiposervicio}"
+                               th:text="#{nav.tipos}">Tipos de servicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/servicios}"
+                               th:text="#{nav.servicios}">Servicios veterinarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/citas}"
+                               th:text="#{nav.citas}">Citas programadas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/#contacto}"
+                               th:text="#{nav.contacto}">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <footer th:fragment="footer" class="text-center py-4 mt-4 bg-dark text-white">
+            <p th:text="#{footer.frase}">Su bienestar es nuestra prioridad.</p>
+            <p class="mb-0">
+                <span th:text="#{footer.texto}">
+                    Veterinaria Huellitas. Todos los derechos reservados.
+                </span>
+                © <span th:text="${#dates.year(#dates.createNow())}">2026</span>
+            </p>
+        </footer>
+
+
+        <!-- Mensaje de error reutilizable -->
+        <div th:fragment="mensajeError">
+            <div th:if="${error != null}"
+                 class="alert alert-danger alert-dismissible fade show"
+                 role="alert">
+                <strong>Error</strong>
+                <span th:text="${error}"></span>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Cerrar">
+                </button>
+            </div>
+        </div>
+
+        <!-- Mensaje de éxito reutilizable -->
+        <div th:fragment="mensajeExito">
+            <div th:if="${todoOk != null}"
+                 class="alert alert-success alert-dismissible fade show"
+                 role="alert">
+                <span th:text="${todoOk}"></span>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Cerrar">
+                </button>
+            </div>
+        </div>
+
+
+    </body>
+</html>
